@@ -23,7 +23,13 @@ public class Users {
 
     private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    public void setEncryptedPassword(String password) {
+    public void setPassword(String password) {
         this.encryptedPassword = passwordEncoder.encode(password);
     }
+
+    public boolean checkPassword(String password) {
+        return passwordEncoder.matches(password, encryptedPassword);
+    }
+
+
 }
